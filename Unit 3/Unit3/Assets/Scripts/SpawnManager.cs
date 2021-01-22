@@ -23,9 +23,10 @@ public class SpawnManager : MonoBehaviour
         
     }
 
+    // spawn obstacle
     void SpawnObstacle ()
     {
-        if (playerControllerScript.gameOver == false)
+        if (playerControllerScript.gameOver == false) // if game is still running keep spawning obstacle
         {
             Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
         }

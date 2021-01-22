@@ -6,11 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRB;
     private Animator playerAnim;
-    private AudioSource playerAudio;
     public ParticleSystem explosionParticle;
     public ParticleSystem dirtParticle;
+
+    private AudioSource playerAudio;
     public AudioClip jumpSound;
     public AudioClip crashSound;
+
     public float jumpforce = 10;
     public float gravityModifier;
     public bool isOnGround = true;
@@ -32,7 +34,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // when pressing space makes player jump
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
         {
             playerRB.AddForce(Vector3.up * jumpforce, ForceMode.Impulse);
@@ -46,21 +48,21 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground")) // when player is on floor
         {
             isOnGround = true;
             dirtParticle.Play();
         } 
-        else if (collision.gameObject.CompareTag("Obstacle"))
+        else if (collision.gameObject.CompareTag("Obstacle"))   // if player gets hit with obstacle execute statements
         {
             gameOver = true;
             Debug.Log("Game Over !");
             playerAnim.SetBool("Death_b", true);
             playerAnim.SetInteger("DeathType_int", 1);
-            explosionParticle.Play();
-            dirtParticle.Stop();
-            playerAudio.PlayOneShot(crashSound, 3.0f);
-        }
+            explosionParticle.Play();  // makes an animation that explodes
+            dirtParticle.Stop();  // makes an animation of dirt at de feet of the player
+            playerAudio.PlayOneShot(crashSound, 3.0f);  // when player gets hit with obstacle play this sound
+        } 
 
     }
   

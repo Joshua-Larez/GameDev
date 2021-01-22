@@ -40,6 +40,7 @@ public class PlayerControllerX : MonoBehaviour
             playerRb.AddForce(Vector3.up * floatForce);
         }
 
+        // letting game know the position of the balloon
         if (transform.position.y > 13)
         {
             isLowEnough = false;
@@ -66,15 +67,15 @@ public class PlayerControllerX : MonoBehaviour
         else if (other.gameObject.CompareTag("Money"))
         {
             fireworksParticle.Play();
-            playerAudio.PlayOneShot(moneySound, 1.0f);
-            Destroy(other.gameObject);
+            playerAudio.PlayOneShot(moneySound, 1.0f);  // collecting money makes sound
+            Destroy(other.gameObject);   
 
         }
 
         else if (other.gameObject.CompareTag("Ground"))
         {
-            playerRb.AddForce(Vector3.up * 10, ForceMode.Impulse);
-            playerAudio.PlayOneShot(bounceSound, 1.5f);
+            playerRb.AddForce(Vector3.up * 10, ForceMode.Impulse);  // when getting input makes player go up
+            playerAudio.PlayOneShot(bounceSound, 1.5f);  //for making balloon sound when hitting ground
         }
     }
 
