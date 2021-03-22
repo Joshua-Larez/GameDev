@@ -15,7 +15,7 @@ public class destroyPlayer : MonoBehaviour
     {
         Death();
     }
-    public void Death()
+    public void Death() // destroy object 
     {
         if (transform.position.y < -10)
         {

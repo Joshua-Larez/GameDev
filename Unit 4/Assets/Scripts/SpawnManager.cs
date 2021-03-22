@@ -20,17 +20,17 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        enemyCount = FindObjectsOfType<Enemy>().Length;
+        enemyCount = FindObjectsOfType<Enemy>().Length; // to keep track of all enemies
 
         if(enemyCount == 0)
         {
-            waveNumber++;
-            SpawnEnemyWave(waveNumber);
+            waveNumber++;   // plus 1 wave 
+            SpawnEnemyWave(waveNumber);  
             SpawnPowerup();
         }
     }
 
-    void SpawnEnemyWave(int enemiesToSpawn)
+    void SpawnEnemyWave(int enemiesToSpawn) // spawn another enemy 
     {
         for (int i = 0; i < enemiesToSpawn; i = i++)
         {
@@ -38,7 +38,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    private Vector3 GenerateSpawnPosition()
+    private Vector3 GenerateSpawnPosition() // generate a random spawn point on the map 
     {
         float spawnPosX = Random.Range(-spawnRange, spawnRange);
         float spawnPosZ = Random.Range(-spawnRange, spawnRange);
@@ -48,7 +48,7 @@ public class SpawnManager : MonoBehaviour
         return randomPos;
     }
 
-    void SpawnPowerup()
+    void SpawnPowerup() // spawn a powerup
     {
         Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
     }

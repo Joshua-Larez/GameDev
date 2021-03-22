@@ -316,7 +316,7 @@ MonoBehaviour:
     type: 3}
   enemyCount: 0
   waveCount: 1
-  enemySpeed: 50
+  enemySpeed: 0
   player: {fileID: 583048338}
 --- !u!1001 &258741155
 PrefabInstance:

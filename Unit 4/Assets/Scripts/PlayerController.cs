@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // to see if powerup is on/off
     {
         if(other.CompareTag("Powerup"))
         {
@@ -45,15 +45,15 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator PowerupCountdownRoutine()
     {
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(7);  // when the player picks up the powerup, the player has seven 7 until the powerup disappears
         hasPowerup = false;
         powerupIndicator.gameObject.SetActive(false);
     }
 
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)  
     {
-        if(collision.gameObject.CompareTag("Enemy") && hasPowerup)
+        if(collision.gameObject.CompareTag("Enemy") && hasPowerup)  // when the player collides with enemy, it pulses the enemy away 
         {
             Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
             Vector3 awayFromPlayer = collision.gameObject.transform.position - transform.position;

@@ -16,16 +16,15 @@ public class PlayerDeath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player == null)
+        if (player == null) // if player died go to thhe next scene
         {
             SceneManager.LoadScene("AfterDeath");
         }
     }
 
-    public void FindNewTarget()
+    public void FindNewTarget() // function to find an object with the tag "Player"
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log("het werkt");
     }
 }
 
